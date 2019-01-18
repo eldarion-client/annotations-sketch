@@ -3818,6 +3818,11 @@ ini@~1.3.0:
   resolved "https://registry.yarnpkg.com/ini/-/ini-1.3.5.tgz#eee25f56db1c9ec6085e0c22778083f596abf927"
   integrity sha512-RZY5huIKCMRWDUqZlEi72f/lmXKMvuszcMBduliQ3nnWbx9X/ZBQO7DijMEYS9EhHBb2qacRUMtC7svLwe0lcw==
 
+interactjs@^1.3.3:
+  version "1.3.4"
+  resolved "https://registry.yarnpkg.com/interactjs/-/interactjs-1.3.4.tgz#9d5aa886f8fa03ea2f6c711e688792e3d3bde1ff"
+  integrity sha512-AQ2CdPEyHqiEEQ1FFgMBj79UEsU1+rUwSXuhOkflvB65p4iECft28SN/PvhD/Y9OtNge8aH1qTibjAi+RXQMqQ==
+
 internal-ip@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/internal-ip/-/internal-ip-3.0.1.tgz#df5c99876e1d2eb2ea2d74f520e3f669a00ece27"
@@ -6938,6 +6943,25 @@ svg-tags@^1.0.0:
   resolved "https://registry.yarnpkg.com/svg-tags/-/svg-tags-1.0.0.tgz#58f71cee3bd519b59d4b2a843b6c7de64ac04764"
   integrity sha1-WPcc7jvVGbWdSyqEO2x95krAR2Q=
 
+svg.draw.js@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/svg.draw.js/-/svg.draw.js-2.0.3.tgz#53171a1444070325f409ded97ad5bc806601520a"
+  integrity sha512-GGK7vBzwdEgr5fJUupqDqYPhQBXxrtBd4CcrgqAt7S4/5REmF6JTSuITeAgfVlfXftOO90t5OqLOtJ4IEEUFVw==
+  dependencies:
+    svg.js "2.x.x"
+
+svg.js@2.x.x, svg.js@^2.2.5:
+  version "2.7.1"
+  resolved "https://registry.yarnpkg.com/svg.js/-/svg.js-2.7.1.tgz#eb977ed4737001eab859949b4a398ee1bb79948d"
+  integrity sha512-ycbxpizEQktk3FYvn/8BH+6/EuWXg7ZpQREJvgacqn46gIddG24tNNe4Son6omdXCnSOaApnpZw6MPCBA1dODA==
+
+svg.select.js@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/svg.select.js/-/svg.select.js-2.1.2.tgz#e41ce13b1acff43a7441f9f8be87a2319c87be73"
+  integrity sha512-tH6ABEyJsAOVAhwcCjF8mw4crjXSI1aa7j2VQR8ZuJ37H2MBUbyeqYr5nEO7sSN3cy9AR9DUwNg0t/962HlDbQ==
+  dependencies:
+    svg.js "^2.2.5"
+
 svgo@^1.0.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/svgo/-/svgo-1.1.1.tgz#12384b03335bcecd85cfa5f4e3375fed671cb985"
@@ -7378,6 +7402,15 @@ vm-browserify@0.0.4:
   integrity sha1-XX6kW7755Kb/ZflUOOCofDV9WnM=
   dependencies:
     indexof "0.0.1"
+
+vue-annotator@^0.13.2:
+  version "0.13.2"
+  resolved "https://registry.yarnpkg.com/vue-annotator/-/vue-annotator-0.13.2.tgz#0f2e292a776cca59658046fbd3165c5464dc8044"
+  integrity sha512-WZFRCThLdolkcKyvQupNB1YvbL6lRoPKlpNXdbyVpJVvrF+JNoW5SD5bzux5CkJRE1NN0pHwOD2UhXc86+sr0w==
+  dependencies:
+    interactjs "^1.3.3"
+    svg.draw.js "^2.0.3"
+    svg.select.js "^2.1.2"
 
 vue-hot-reload-api@^2.3.0:
   version "2.3.1"

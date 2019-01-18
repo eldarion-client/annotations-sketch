@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "vue": "^2.5.21",
+    "vue-annotator": "^0.13.2",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
