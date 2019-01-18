@@ -6,6 +6,9 @@
        <!-- <polygon class="stroke" slot="drawing" /> not supported yet -->
       <rect class="stroke" slot="drawing" />
     </Annotator>
+    <div v-for="(box, index) in drawings" :key="index">
+      x: {{ box.x }}, y: {{ box.y }}, w: {{ box.width }}, h: {{ box.height }}
+    </div>
   </div>
 </template>
 
@@ -16,7 +19,8 @@ export default {
   name: 'app',
   data() {
     return {
-      drawing: false
+      drawing: false,
+      drawings: []
     }
   },
   components: {
@@ -24,13 +28,13 @@ export default {
   },
   methods: {
     drawfinish (element) {
-      console.log(`finish drawing`, `<${element.type}>`, 'sdsd')
+      this.drawings.push(element.node.getBBox());
     },
     drawcancel () {
-      console.log('cancel drawing')
+      //console.log('cancel drawing')
     },
     onDraw (element) {
-      console.log(element.node)
+      //sconsole.log(element.node)
     }
   }
 }
