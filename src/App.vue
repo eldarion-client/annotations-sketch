@@ -1,40 +1,53 @@
 <template>
   <div id="app">
-    <button @click="drawing = !drawing">{{ drawing ? "Stop Drawing" : "Start Drawing" }}</button>
-    <Annotator :drawing="drawing" @draw-end="drawfinish" @draw-cancel="drawcancel" @draw="onDraw">
-       <img alt="old manuscript" src="./assets/747-at150.gif">
-       <!-- <polygon class="stroke" slot="drawing" /> not supported yet -->
-      <rect class="stroke" slot="drawing" />
-    </Annotator>
-    <div v-for="(box, index) in drawings" :key="index">
-      x: {{ box.x }}, y: {{ box.y }}, w: {{ box.width }}, h: {{ box.height }}
+    <SelectImages v-if="images.length === 0" />
+    <div v-else>
+      <AnnotateImage
+        v-for="(image, index) in images"
+        v-if="selectedIndex === index"
+        :key="index" :image-index="index" :image-url="image" @next="next" @prev="prev" />
     </div>
+    <div v-for="(annotation, index) in annotations" :key="index">{{ annotation[0] }}: {{ annotation[1].x }}, {{ annotation[1].y }}</div>
   </div>
 </template>
 
 <script>
-import Annotator from 'vue-annotator';
+import SelectImages from './components/SelectImages.vue';
+import AnnotateImage from './components/AnnotateImage.vue';
 
 export default {
   name: 'app',
+  components: {
+    SelectImages,
+    AnnotateImage,
+  },
   data() {
     return {
-      drawing: false,
-      drawings: []
+      selectedIndex: 0
     }
   },
-  components: {
-    Annotator
+  computed: {
+    annotations() {
+      return this.$store.state.annotations;
+    },
+    images() {
+      return this.$store.state.images;
+    }
   },
   methods: {
-    drawfinish (element) {
-      this.drawings.push(element.node.getBBox());
+    prev() {
+      if (this.selectedIndex === 0) {
+        this.selectedIndex = this.images.length - 1;
+      } else {
+        this.selectedIndex = this.selectedIndex - 1;
+      }
     },
-    drawcancel () {
-      //console.log('cancel drawing')
-    },
-    onDraw (element) {
-      //sconsole.log(element.node)
+    next() {
+      if (this.selectedIndex === this.images.length - 1) {
+        this.selectedIndex = 0;
+      } else {
+        this.selectedIndex = this.selectedIndex + 1;
+      }
     }
   }
 }
@@ -63,5 +76,21 @@ svg {
 .stroke:hover {
   stroke: orange;
   stroke-width: 3px;
+}
+button {
+  cursor: pointer;
+  font-size: 24px;
+  background: rgb(53, 53, 187);
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 5px;
+  &:hover {
+    background: rgb(75, 75, 194);
+  }
+}
+textarea {
+  width: 900px;
+  height: 300px;
+  border: 1px solid #CCC;
 }
 </style>
